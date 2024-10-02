@@ -22,8 +22,7 @@ jobs:
         env:
           NODE_OPTIONS: --openssl-legacy-provider
         run: |
-          npm install
-          npm audit fix --force  # Forzar la corrección de vulnerabilidades, aunque haya breaking changes
+          npm install --legacy-peer-deps  # Evita errores de dependencias peer
           npm run build --if-present
           npm run test --if-present -- --passWithNoTests
 
@@ -31,7 +30,7 @@ jobs:
         run: zip -r release.zip ./build
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3 # Actualizado a v3
+        uses: actions/upload-artifact@v3
         with:
           name: node-app
           path: release.zip
@@ -43,11 +42,11 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write # This is required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3 # Actualizado a v3
+        uses: actions/download-artifact@v3
         with:
           name: node-app
 
