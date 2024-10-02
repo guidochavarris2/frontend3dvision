@@ -23,7 +23,7 @@ jobs:
           NODE_OPTIONS: --openssl-legacy-provider
         run: |
           npm install
-          npm audit fix --force
+          npm audit fix --force  # Forzar la corrección de vulnerabilidades, aunque haya breaking changes
           npm run build --if-present
           npm run test --if-present -- --passWithNoTests
 
