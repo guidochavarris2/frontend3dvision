@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { CgMouse } from "react-icons/all";
+import { CgMouse } from "react-icons/cg"; // Importar desde el paquete correcto
 import "./Home.css";
 import ProductCard from "./ProductCard.js";
 import MetaData from "../layout/MetaData";
@@ -30,8 +30,8 @@ const Home = () => {
           <MetaData title="ECOMMERCE" />
 
           <div className="banner">
-            <p>Bienvenido a vision3d  future</p>
-            <h1>Encuentra aqui todos tus productos</h1>
+            <p>Bienvenido a vision3d future</p>
+            <h1>Encuentra aquí todos tus productos</h1>
 
             <a href="#container">
               <button>
